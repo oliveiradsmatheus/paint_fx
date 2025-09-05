@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ContextMenu?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane fx:id="painel" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="matheus.bcc.paintfx.PrincipalController">
+    <top>
+        <VBox prefHeight="87.0" prefWidth="800.0" style="-fx-background-color: gray;" BorderPane.alignment="CENTER">
+            <children>
+                <MenuBar prefHeight="36.0" prefWidth="800.0">
+                    <menus>
+                        <Menu text="_Arquivo">
+                            <items>
+                                <MenuItem onAction="#onAbrir" text="_Abrir..." />
+                                <MenuItem fx:id="menuRecarregar" disable="true" onAction="#onRecarregar" text="_Recarregar" />
+                                <SeparatorMenuItem mnemonicParsing="false" />
+                                <MenuItem fx:id="menuSalvar" disable="true" onAction="#onSalvar" text="_Salvar" />
+                                <MenuItem fx:id="menuSalvarComo" disable="true" onAction="#onSalvarComo" text="Salvar _como..." />
+                                <SeparatorMenuItem mnemonicParsing="false" />
+                                <MenuItem fx:id="menuFechar" disable="true" onAction="#onFechar" text="_Fechar" />
+                            </items>
+                        </Menu>
+                        <Menu text="_Editar">
+                            <items>
+                                <MenuItem fx:id="menuCinza" disable="true" onAction="#onEscalaCinza" text="Escala de _Cinza" />
+                                <MenuItem fx:id="menuPB" disable="true" onAction="#onPretoBranco" text="_Preto e Branco" />
+                                <SeparatorMenuItem mnemonicParsing="false" />
+                                <MenuItem fx:id="menuInv" disable="true" onAction="#onInverter" text="_Inverter Cores" />
+                                <SeparatorMenuItem mnemonicParsing="false" />
+                                <MenuItem fx:id="menuHor" disable="true" onAction="#onEspelharHorizontal" text="Espelhar _Horizontal" />
+                                <MenuItem fx:id="menuVer" disable="true" onAction="#onEspelharVertical" text="Espelhar _Vertical" />
+                            </items>
+                        </Menu>
+                        <Menu text="_ImageJ">
+                            <items>
+                                <MenuItem fx:id="menuBorda" disable="true" onAction="#onDetectarBordas" text="Detectar _Bordas" />
+                                <MenuItem fx:id="menuGauss" disable="true" onAction="#onDesfoque" text="Desfoque _Gaussiano" />
+                                <MenuItem fx:id="menuDilatar" disable="true" onAction="#onDilatar" text="_Dilatar" />
+                                <MenuItem fx:id="menuCalorificar" disable="true" onAction="#onCalorificar" text="_Calorificar" />
+                        <MenuItem fx:id="menuNoise" disable="true" onAction="#onNoise" text="_Noise" />
+                            </items>
+                        </Menu>
+                        <Menu text="A_juda">
+                            <items>
+                                <MenuItem fx:id="menuInfo" disable="true" mnemonicParsing="false" onAction="#onInfo" text="Informações" />
+                                <MenuItem mnemonicParsing="false" onAction="#onSobre" text="Sobre" />
+                            </items>
+                        </Menu>
+                    </menus>
+                </MenuBar>
+                <ToolBar prefHeight="109.0" prefWidth="800.0">
+                    <items>
+                        <Button mnemonicParsing="false" onAction="#onAbrir" prefHeight="32.0" prefWidth="32.0" style="-fx-background-image: url('i-abrir.png'); -fx-background-color: transparent; -fx-background-position: center center; -fx-background-repeat: no-repeat; -fx-background-size: contain;">
+                            <tooltip>
+                                <Tooltip text="Abrir">
+                                    <font>
+                                        <Font size="13.0" />
+                                    </font></Tooltip>
+                            </tooltip>
+                            <font>
+                                <Font size="8.0" />
+                            </font>
+                        </Button>
+                        <Button fx:id="btRecarregar" disable="true" layoutX="10.0" layoutY="20.0" mnemonicParsing="false" onAction="#onRecarregar" prefHeight="32.0" prefWidth="32.0" style="-fx-background-image: url('i-recarregar.png'); -fx-background-color: transparent; -fx-background-position: center center; -fx-background-repeat: no-repeat; -fx-background-size: contain;">
+                            <tooltip>
+                                <Tooltip text="Recarregar Imagem">
+                                    <font>
+                                        <Font size="13.0" />
+                                    </font>
+                                </Tooltip>
+                            </tooltip>
+                            <font>
+                                <Font size="8.0" />
+                            </font>
+                        </Button>
+                        <Button fx:id="btSalvar" disable="true" layoutX="10.0" layoutY="20.0" mnemonicParsing="false" onAction="#onSalvar" prefHeight="32.0" prefWidth="32.0" style="-fx-background-image: url('i-salvar.png'); -fx-background-color: transparent; -fx-background-position: center center; -fx-background-repeat: no-repeat; -fx-background-size: contain;">
+                            <font>
+                                <Font size="8.0" />
+                            </font>
+                            <tooltip>
+                                <Tooltip text="Salvar">
+                                    <font>
+                                        <Font size="13.0" />
+                                    </font>
+                                </Tooltip>
+                            </tooltip>
+                        </Button>
+                        <Button fx:id="btSalvarComo" disable="true" layoutX="82.0" layoutY="20.0" mnemonicParsing="false" onAction="#onSalvarComo" prefHeight="32.0" prefWidth="32.0" style="-fx-background-image: url('i-salvarcomo.png'); -fx-background-color: transparent; -fx-background-position: center center; -fx-background-repeat: no-repeat; -fx-background-size: contain;">
+                            <font>
+                                <Font size="8.0" />
+                            </font>
+                            <tooltip>
+                                <Tooltip text="Salvar como...">
+                                    <font>
+                                        <Font size="13.0" />
+                                    </font>
+                                </Tooltip>
+                            </tooltip>
+                        </Button>
+                        <Separator orientation="VERTICAL" prefHeight="0.0" prefWidth="2.0" />
+                        <Button fx:id="btTonsCinza" disable="true" layoutX="46.0" layoutY="20.0" mnemonicParsing="false" onAction="#onEscalaCinza" prefHeight="32.0" prefWidth="32.0" style="-fx-background-image: url('i-cinza.png'); -fx-background-color: transparent; -fx-background-position: center center; -fx-background-repeat: no-repeat; -fx-background-size: contain;">
+                            <font>
+                                <Font size="8.0" />
+                            </font>
+                            <tooltip>
+                                <Tooltip text="Escala de Cinza">
+                                    <font>
+                                        <Font size="13.0" />
+                                    </font>
+                                </Tooltip>
+                            </tooltip>
+                        </Button>
+                        <Button fx:id="btHor" disable="true" layoutX="247.0" layoutY="20.0" mnemonicParsing="false" onAction="#onEspelharHorizontal" prefHeight="32.0" prefWidth="32.0" style="-fx-background-image: url('i-horizontal.png'); -fx-background-color: transparent; -fx-background-position: center center; -fx-background-repeat: no-repeat; -fx-background-size: contain;">
+                            <font>
+                                <Font size="8.0" />
+                            </font>
+                            <tooltip>
+                                <Tooltip text="Espelhar Horizontal">
+                                    <font>
+                                        <Font size="13.0" />
+                                    </font>
+                                </Tooltip>
+                            </tooltip>
+                        </Button>
+                        <Button fx:id="btVer" disable="true" layoutX="200.0" layoutY="20.0" mnemonicParsing="false" onAction="#onEspelharVertical" prefHeight="32.0" prefWidth="32.0" style="-fx-background-image: url('i-vertical.png'); -fx-background-color: transparent; -fx-background-position: center center; -fx-background-repeat: no-repeat; -fx-background-size: contain;">
+                            <font>
+                                <Font size="8.0" />
+                            </font>
+                            <tooltip>
+                                <Tooltip text="Espelhar Vertical">
+                                    <font>
+                                        <Font size="13.0" />
+                                    </font>
+                                </Tooltip>
+                            </tooltip>
+                        </Button>
+                        <Separator layoutX="82.0" layoutY="10.0" orientation="VERTICAL" prefHeight="0.0" prefWidth="2.0" />
+                        <Button fx:id="btInfo" disable="true" layoutX="283.0" layoutY="20.0" mnemonicParsing="false" onAction="#onInfo" prefHeight="32.0" prefWidth="32.0" style="-fx-background-image: url('i-info.png'); -fx-background-color: transparent; -fx-background-position: center center; -fx-background-repeat: no-repeat; -fx-background-size: contain;">
+                            <font>
+                                <Font size="8.0" />
+                            </font>
+                            <tooltip>
+                                <Tooltip text="Informações">
+                                    <font>
+                                        <Font size="13.0" />
+                                    </font>
+                                </Tooltip>
+                            </tooltip>
+                        </Button>
+                        <Button layoutX="211.0" layoutY="20.0" mnemonicParsing="false" onAction="#onSobre" prefHeight="32.0" prefWidth="32.0" style="-fx-background-image: url('i-ajuda.png'); -fx-background-color: transparent; -fx-background-position: center center; -fx-background-repeat: no-repeat; -fx-background-size: contain;">
+                            <font>
+                                <Font size="8.0" />
+                            </font>
+                            <tooltip>
+                                <Tooltip text="Sobre">
+                                    <font>
+                                        <Font size="13.0" />
+                                    </font>
+                                </Tooltip>
+                            </tooltip>
+                        </Button>
+                        <Separator layoutX="154.0" layoutY="10.0" orientation="VERTICAL" prefHeight="0.0" prefWidth="2.0" />
+                        <Button fx:id="btPincel" disable="true" layoutX="329.0" layoutY="20.0" mnemonicParsing="false" onAction="#onAtivarDesenho" prefHeight="32.0" prefWidth="32.0" style="-fx-background-image: url('i-pincel.png'); -fx-background-color: transparent; -fx-background-position: center center; -fx-background-repeat: no-repeat; -fx-background-size: contain;">
+                            <font>
+                                <Font size="8.0" />
+                            </font>
+                            <tooltip>
+                                <Tooltip text="Desenhar">
+                                    <font>
+                                        <Font size="13.0" />
+                                    </font>
+                                </Tooltip>
+                            </tooltip>
+                        </Button>
+                  <Button fx:id="btCor" ellipsisString="" mnemonicParsing="false" prefHeight="24.0" prefWidth="24.0" style="-fx-background-color: black;" />
+                  <VBox prefHeight="54.0" prefWidth="120.0">
+                     <children>
+                        <HBox prefHeight="30.0" prefWidth="100.0">
+                           <children>
+                              <Button fx:id="btPreto" ellipsisString="" mnemonicParsing="false" onAction="#onTrocarCor" prefHeight="24.0" prefWidth="24.0" style="-fx-background-color: black;" />
+                              <Button fx:id="btVermelho" ellipsisString="" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#onTrocarCor" prefHeight="24.0" prefWidth="24.0" style="-fx-background-color: red;" />
+                              <Button fx:id="btLaranja" ellipsisString="" layoutX="34.0" layoutY="10.0" mnemonicParsing="false" onAction="#onTrocarCor" prefHeight="24.0" prefWidth="24.0" style="-fx-background-color: orange;" />
+                              <Button fx:id="btAmarelo" ellipsisString="" layoutX="58.0" layoutY="10.0" mnemonicParsing="false" onAction="#onTrocarCor" prefHeight="24.0" prefWidth="24.0" style="-fx-background-color: yellow;" />
+                              <Button fx:id="btVerde" ellipsisString="" layoutX="82.0" layoutY="10.0" mnemonicParsing="false" onAction="#onTrocarCor" prefHeight="24.0" prefWidth="24.0" style="-fx-background-color: green;" />
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="29.0" prefWidth="100.0">
+                           <children>
+                              <Button fx:id="btBranco" ellipsisString="" mnemonicParsing="false" onAction="#onTrocarCor" prefHeight="24.0" prefWidth="24.0" style="-fx-background-color: white;" text="Button" />
+                              <Button fx:id="btCinza" ellipsisString="" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#onTrocarCor" prefHeight="24.0" prefWidth="24.0" style="-fx-background-color: gray;" text="Button" />
+                              <Button fx:id="btRosa" ellipsisString="" layoutX="34.0" layoutY="10.0" mnemonicParsing="false" onAction="#onTrocarCor" prefHeight="24.0" prefWidth="24.0" style="-fx-background-color: pink;" text="Button" />
+                              <Button fx:id="btTurquesa" ellipsisString="" layoutX="58.0" layoutY="10.0" mnemonicParsing="false" onAction="#onTrocarCor" prefHeight="24.0" prefWidth="24.0" style="-fx-background-color: turquoise;" text="Button" />
+                              <Button fx:id="btRoxo" ellipsisString="" layoutX="82.0" layoutY="10.0" mnemonicParsing="false" onAction="#onTrocarCor" prefHeight="24.0" prefWidth="24.0" style="-fx-background-color: purple;" text="Button" />
+                           </children>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </HBox>
+                     </children>
+                  </VBox>
+                    </items>
+                </ToolBar>
+            </children></VBox>
+    </top>
+    <center>
+        <ScrollPane prefHeight="536.0" prefWidth="800.0" BorderPane.alignment="CENTER">
+            <content>
+                <ImageView fx:id="imageView" onMouseDragged="#onDesenhar" onMousePressed="#onDesenhar" pickOnBounds="true" preserveRatio="true" />
+            </content>
+         <contextMenu>
+            <ContextMenu onAction="#onInfo">
+              <items>
+                <MenuItem fx:id="miInfo" mnemonicParsing="false" text="Informacoes" disable="true" />
+              </items>
+            </ContextMenu>
+         </contextMenu>
+        </ScrollPane>
+    </center>
+    <bottom>
+        <HBox alignment="CENTER" prefHeight="39.0" prefWidth="800.0" BorderPane.alignment="CENTER">
+            <children>
+                <Label fx:id="lbFileImage" text="Label" />
+                <Separator orientation="VERTICAL" prefHeight="200.0">
+                    <HBox.margin>
+                        <Insets left="32.0" right="32.0" />
+                    </HBox.margin>
+                </Separator>
+                <Slider fx:id="slZoom" disable="true" max="700.0" min="25.0" prefHeight="33.0" prefWidth="362.0" showTickLabels="true" value="100.0" />
+            </children>
+        </HBox>
+    </bottom>
+</BorderPane>

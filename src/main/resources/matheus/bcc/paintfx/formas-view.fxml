@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.CubicCurve?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<VBox alignment="CENTER" prefHeight="550.0" prefWidth="66.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="matheus.bcc.paintfx.FormasController">
+   <children>
+      <CubicCurve controlX1="-117.18302917480469" controlX2="-168.44522094726562" controlY1="-18.572040557861328" controlY2="24.396541595458984" endX="-129.00927734375" endY="12.578393936157227" fill="WHITE" onMouseClicked="#onLivre" startX="-160.06549072265625" startY="-6.652809143066406" stroke="BLACK">
+         <VBox.margin>
+            <Insets bottom="12.0" />
+         </VBox.margin>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </CubicCurve>
+      <Circle fill="WHITE" onMouseClicked="#onCirculo" radius="17.0" stroke="BLACK" strokeType="INSIDE">
+         <VBox.margin>
+            <Insets bottom="12.0" />
+         </VBox.margin>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Circle>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="26.0" onMouseClicked="#onRetangulo" stroke="BLACK" strokeType="INSIDE" width="32.0">
+         <VBox.margin>
+            <Insets bottom="12.0" />
+         </VBox.margin>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Rectangle>
+      <Text onMouseClicked="#onTexto" strokeType="OUTSIDE" strokeWidth="0.0" text="T" textAlignment="CENTER" wrappingWidth="28.13006591796875">
+         <font>
+            <Font name="Times New Roman" size="30.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Text>
+   </children>
+</VBox>
