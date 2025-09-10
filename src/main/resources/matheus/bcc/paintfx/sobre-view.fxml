@@ -7,37 +7,37 @@
 <?import javafx.scene.text.Font?>
 
 <VBox alignment="CENTER" prefHeight="480.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="matheus.bcc.paintfx.SobreController">
-   <children>
-      <Label alignment="CENTER" prefHeight="80.0" prefWidth="150.0" text="PaintFX" textAlignment="CENTER">
-         <font>
-            <Font name="System Bold" size="32.0" />
-         </font>
-      </Label>
-      <Label alignment="CENTER" layoutX="310.0" layoutY="272.0" prefHeight="150.0" prefWidth="550.0" text="Aplicativo de manipulação de imagens desenvolvido para a disciplina de Ferramentas Computacionais II, utilizando JavaFX, ImageJ e SceneBuilder." textAlignment="CENTER" wrapText="true">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Label>
-      <Label alignment="CENTER" layoutX="310.0" layoutY="280.0" prefHeight="60.0" prefWidth="200.0" text="Desenvolvedores" textAlignment="CENTER">
-         <font>
-            <Font name="System Bold" size="20.0" />
-         </font>
-      </Label>
-      <Label alignment="CENTER" layoutX="139.0" layoutY="343.0" prefHeight="50.0" prefWidth="382.0" text="102421080 - Matheus Oliveira da Silva" textAlignment="CENTER">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Label>
-      <Button mnemonicParsing="false" onAction="#onFechar" prefHeight="30.0" prefWidth="65.0" text="Fechar">
-         <VBox.margin>
-            <Insets top="24.0" />
-         </VBox.margin>
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Button>
-   </children>
-   <padding>
-      <Insets bottom="24.0" left="24.0" right="24.0" top="24.0" />
-   </padding>
+    <children>
+        <Label alignment="CENTER" prefHeight="80.0" prefWidth="150.0" text="PaintFX" textAlignment="CENTER">
+            <font>
+                <Font name="System Bold" size="32.0" />
+            </font>
+        </Label>
+        <Label alignment="CENTER" layoutX="310.0" layoutY="272.0" prefHeight="150.0" prefWidth="550.0" text="Aplicativo de manipulação de imagens desenvolvido para a disciplina de Ferramentas Computacionais II, utilizando JavaFX, ImageJ e SceneBuilder." textAlignment="CENTER" wrapText="true">
+            <font>
+                <Font size="16.0" />
+            </font>
+        </Label>
+        <Label alignment="CENTER" layoutX="310.0" layoutY="280.0" prefHeight="60.0" prefWidth="200.0" text="Desenvolvedores" textAlignment="CENTER">
+            <font>
+                <Font name="System Bold" size="20.0" />
+            </font>
+        </Label>
+        <Label alignment="CENTER" layoutX="139.0" layoutY="343.0" prefHeight="50.0" prefWidth="382.0" text="102421080 - Matheus Oliveira da Silva" textAlignment="CENTER">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </Label>
+        <Button mnemonicParsing="false" onAction="#onFechar" prefHeight="30.0" prefWidth="65.0" text="Fechar">
+            <VBox.margin>
+                <Insets top="24.0" />
+            </VBox.margin>
+            <font>
+                <Font size="14.0" />
+            </font>
+        </Button>
+    </children>
+    <padding>
+        <Insets bottom="24.0" left="24.0" right="24.0" top="24.0" />
+    </padding>
 </VBox>

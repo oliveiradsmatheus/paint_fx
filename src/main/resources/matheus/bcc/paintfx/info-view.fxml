@@ -8,71 +8,71 @@
 <?import javafx.scene.text.Font?>
 
 <VBox alignment="CENTER" prefHeight="260.0" prefWidth="402.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="matheus.bcc.paintfx.InfoController">
-   <children>
-      <Label text="Propriedades">
-         <VBox.margin>
-            <Insets bottom="6.0" top="18.0" />
-         </VBox.margin>
-         <font>
-            <Font name="System Bold" size="18.0" />
-         </font>
-      </Label>
-      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
-         <children>
-            <Label text="Nome: ">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </Label>
-            <Label fx:id="nome" layoutX="121.0" layoutY="44.0" text="Label" />
-         </children>
-         <VBox.margin>
-            <Insets bottom="6.0" top="6.0" />
-         </VBox.margin>
-      </HBox>
-      <HBox alignment="CENTER" layoutX="10.0" layoutY="90.0" prefHeight="100.0" prefWidth="200.0">
-         <children>
-            <Label text="Tipo: ">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </Label>
-            <Label fx:id="tipo" layoutX="121.0" layoutY="44.0" text="Label" />
-         </children>
-         <VBox.margin>
-            <Insets bottom="6.0" top="6.0" />
-         </VBox.margin>
-      </HBox>
-      <HBox alignment="CENTER" layoutX="10.0" layoutY="140.0" prefHeight="100.0" prefWidth="200.0">
-         <children>
-            <Label text="Local: ">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </Label>
-            <Label fx:id="local" layoutX="121.0" layoutY="44.0" text="Label" />
-         </children>
-         <VBox.margin>
-            <Insets bottom="6.0" top="6.0" />
-         </VBox.margin>
-      </HBox>
-      <HBox alignment="CENTER" layoutX="10.0" layoutY="184.0" prefHeight="100.0" prefWidth="200.0">
-         <children>
-            <Label text="Tamanho: ">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </Label>
-            <Label fx:id="tamanho" layoutX="121.0" layoutY="44.0" text="Label" />
-         </children>
-         <VBox.margin>
-            <Insets bottom="6.0" top="6.0" />
-         </VBox.margin>
-      </HBox>
-      <Button fx:id="btConfirmar" mnemonicParsing="false" onAction="#onConfirmar" text="Confirmar">
-         <VBox.margin>
-            <Insets bottom="18.0" top="6.0" />
-         </VBox.margin>
-      </Button>
-   </children>
+    <children>
+        <Label text="Propriedades">
+            <VBox.margin>
+                <Insets bottom="6.0" top="18.0" />
+            </VBox.margin>
+            <font>
+                <Font name="System Bold" size="18.0" />
+            </font>
+        </Label>
+        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+            <children>
+                <Label text="Nome: ">
+                    <font>
+                        <Font name="System Bold" size="12.0" />
+                    </font>
+                </Label>
+                <Label fx:id="nome" layoutX="121.0" layoutY="44.0" text="Label" />
+            </children>
+            <VBox.margin>
+                <Insets bottom="6.0" top="6.0" />
+            </VBox.margin>
+        </HBox>
+        <HBox alignment="CENTER" layoutX="10.0" layoutY="90.0" prefHeight="100.0" prefWidth="200.0">
+            <children>
+                <Label text="Tipo: ">
+                    <font>
+                        <Font name="System Bold" size="12.0" />
+                    </font>
+                </Label>
+                <Label fx:id="tipo" layoutX="121.0" layoutY="44.0" text="Label" />
+            </children>
+            <VBox.margin>
+                <Insets bottom="6.0" top="6.0" />
+            </VBox.margin>
+        </HBox>
+        <HBox alignment="CENTER" layoutX="10.0" layoutY="140.0" prefHeight="100.0" prefWidth="200.0">
+            <children>
+                <Label text="Local: ">
+                    <font>
+                        <Font name="System Bold" size="12.0" />
+                    </font>
+                </Label>
+                <Label fx:id="local" layoutX="121.0" layoutY="44.0" text="Label" />
+            </children>
+            <VBox.margin>
+                <Insets bottom="6.0" top="6.0" />
+            </VBox.margin>
+        </HBox>
+        <HBox alignment="CENTER" layoutX="10.0" layoutY="184.0" prefHeight="100.0" prefWidth="200.0">
+            <children>
+                <Label text="Tamanho: ">
+                    <font>
+                        <Font name="System Bold" size="12.0" />
+                    </font>
+                </Label>
+                <Label fx:id="tamanho" layoutX="121.0" layoutY="44.0" text="Label" />
+            </children>
+            <VBox.margin>
+                <Insets bottom="6.0" top="6.0" />
+            </VBox.margin>
+        </HBox>
+        <Button fx:id="btConfirmar" mnemonicParsing="false" onAction="#onConfirmar" text="Confirmar">
+            <VBox.margin>
+                <Insets bottom="18.0" top="6.0" />
+            </VBox.margin>
+        </Button>
+    </children>
 </VBox>
