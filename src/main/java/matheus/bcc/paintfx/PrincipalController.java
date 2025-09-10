@@ -59,11 +59,12 @@ public class PrincipalController {
     public Button btVer;
     public Button btInfo;
 
-    public boolean alterada = false, desenhar = false;
+    public boolean alterada = false, modoDesenho = false;
     public Image original;
-    public double largura;
+    public double largura, xi, yi, xf, yf;
     public String caminho;
     public MenuItem menuNoise;
+    File arquivo;
 
     public Button btCor;
 
@@ -83,7 +84,7 @@ public class PrincipalController {
     public void onAbrir(ActionEvent actionEvent) {
         FileChooser fc = new FileChooser();
         fc.setTitle("Abrir");
-        fc.setInitialDirectory(new File("../../../Pictures/"));
+        fc.setInitialDirectory(new File("../"));
         fc.getExtensionFilters().addAll(
                 new FileChooser.ExtensionFilter(
                         "Imagens (*.png, *.jpg, *.bmp)",
@@ -93,7 +94,7 @@ public class PrincipalController {
                         "*.bmp"
                 )
         );
-        File arquivo = fc.showOpenDialog(null);
+        arquivo = fc.showOpenDialog(null);
         if (arquivo != null) {
             desabilitarBotoes(false);
             caminho = arquivo.getAbsolutePath();
@@ -133,6 +134,13 @@ public class PrincipalController {
                 if (salvo) {
                     imageView.setImage(null);
                     alterada = false;
+                    if (modoDesenho) {
+                        modoDesenho = false;
+                        FormasController.forma = -1;
+                        btPincel.setStyle("-fx-background-image: url('i-pincel.png'); -fx-background-color: transparent; -fx-background-position: center center; -fx-background-repeat: no-repeat; -fx-background-size: contain;");
+                        painel.setRight(null);
+                    }
+                    desabilitarBotoes(true);
                 } else
                     System.err.println("Falha ao salvar a imagem. Fechamento cancelado.");
             } else if (resultado.get() == botaoSalvarComo) {
@@ -140,57 +148,122 @@ public class PrincipalController {
                 if (salvo) {
                     imageView.setImage(null);
                     alterada = false;
+                    if (modoDesenho) {
+                        modoDesenho = false;
+                        FormasController.forma = -1;
+                        btPincel.setStyle("-fx-background-image: url('i-pincel.png'); -fx-background-color: transparent; -fx-background-position: center center; -fx-background-repeat: no-repeat; -fx-background-size: contain;");
+                        painel.setRight(null);
+                    }
+                    desabilitarBotoes(true);
                 } else
                     System.err.println("Falha ao salvar a imagem. Fechamento cancelado.");
             }else if (resultado.get() == botaoNaoSalvar) {
                 imageView.setImage(null);
                 alterada = false;
+                if (modoDesenho) {
+                    modoDesenho = false;
+                    FormasController.forma = -1;
+                    btPincel.setStyle("-fx-background-image: url('i-pincel.png'); -fx-background-color: transparent; -fx-background-position: center center; -fx-background-repeat: no-repeat; -fx-background-size: contain;");
+                    painel.setRight(null);
+                }
+                desabilitarBotoes(true);
             }
         } else {
             alert.setContentText("Deseja realmente sair?");
             ButtonType botaoSim = new ButtonType("Sim");
             ButtonType botaoCancelar = new ButtonType("Cancelar", ButtonBar.ButtonData.CANCEL_CLOSE);
             alert.getButtonTypes().setAll(botaoSim, botaoCancelar);
-            if (alert.showAndWait().get() == botaoSim)
+            if (alert.showAndWait().get() == botaoSim) {
                 imageView.setImage(null);
+                if (modoDesenho) {
+                    modoDesenho = false;
+                    FormasController.forma = -1;
+                    btPincel.setStyle("-fx-background-image: url('i-pincel.png'); -fx-background-color: transparent; -fx-background-position: center center; -fx-background-repeat: no-repeat; -fx-background-size: contain;");
+                    painel.setRight(null);
+                }
+                desabilitarBotoes(true);
+            }
         }
-        desabilitarBotoes(true);
         lbFileImage.setText("");
     }
 
-    public void onDesenhar(MouseEvent mouseEvent) {
+    public void onPressionarMouse(MouseEvent mouseEvent) {
+        if (modoDesenho && imageView.getImage() != null) {
+            Image image = imageView.getImage();
 
-        Image image = imageView.getImage();
+            double viewLargura = imageView.getBoundsInLocal().getWidth();
+            double viewAltura = imageView.getBoundsInLocal().getHeight();
+            double escalaX = image.getWidth() / viewLargura;
+            double escalaY = image.getHeight() / viewAltura;
 
+            xi = mouseEvent.getX() * escalaX;
+            yi = mouseEvent.getY() * escalaY;
 
-        if (image!=null && desenhar){
-            double x,y;
-            double largura,altura,viewLargura,viewAltura;
-            largura=image.getWidth();
-            altura=image.getHeight();
+            boolean cliqueDentroDaImagem = xi >= 0 && xi < image.getWidth() && yi >= 0 && yi < image.getHeight();
+            if (cliqueDentroDaImagem && FormasController.forma == 4) {
+                TextInputDialog dialog = new TextInputDialog("");
+                dialog.setTitle("Adicionar Texto");
+                dialog.setContentText("Texto:");
+                Optional<String> result = dialog.showAndWait();
+                if (result.isPresent() && !result.get().isEmpty()){
+                    Font fonte = new Font("Arial", Font.PLAIN, 24);
+                    imageView.setImage(ConversorImagem.adicionarTexto(image, result.get(), fonte, cor, (int) xi, (int) yi));
+                    alterada = true;
+                }
+            }
+        }
+    }
 
-            viewLargura=imageView.getBoundsInLocal().getWidth();
-            viewAltura=imageView.getBoundsInLocal().getHeight();
+    public void onArrastarMouse(MouseEvent mouseEvent) {
+        if (modoDesenho && imageView.getImage() != null) { // Apenas para o modo Mão Livre
+            Image image = imageView.getImage();
 
-            double escalaX,escalaY;
-            escalaX= largura/viewLargura;
-            escalaY= altura/viewAltura;
+            double x, y;
+            double viewLargura = imageView.getBoundsInLocal().getWidth();
+            double viewAltura = imageView.getBoundsInLocal().getHeight();
+            double escalaX = image.getWidth() / viewLargura;
+            double escalaY = image.getHeight() / viewAltura;
 
-            x=mouseEvent.getX()*escalaX;
-            y=mouseEvent.getY()*escalaY;
-            image = ConversorImagem.desenharNaImagem(image, x, y, 50, cor);
+            x = mouseEvent.getX() * escalaX;
+            y = mouseEvent.getY() * escalaY;
+            if (FormasController.forma == 1) {
+                imageView.setImage(ConversorImagem.desenharNaImagem(image, x, y, 50, cor));
+                alterada = true;
+            }
+        }
+    }
+
+    public void onSoltarMouse(MouseEvent mouseEvent) {
+        if (modoDesenho && imageView.getImage() != null) { // Apenas para o modo Retângulo
+            Image image = imageView.getImage();
+
+            double viewLargura = imageView.getBoundsInLocal().getWidth();
+            double viewAltura = imageView.getBoundsInLocal().getHeight();
+            double escalaX = image.getWidth() / viewLargura;
+            double escalaY = image.getHeight() / viewAltura;
+
+            xf = mouseEvent.getX() * escalaX;
+            yf = mouseEvent.getY() * escalaY;
+
+            if (FormasController.forma == 2)
+                image = ConversorImagem.desenharCirculo(image, xi, yi, xf, yf, 5, cor);
+            else if (FormasController.forma == 3)
+                image = ConversorImagem.desenharRetangulo(image, xi, yi, xf, yf, 5, cor);
             imageView.setImage(image);
+            alterada = true;
         }
     }
 
     public void onAtivarDesenho(ActionEvent actionEvent) throws Exception {
-        desenhar = !desenhar;
-        if (desenhar) {
+        modoDesenho = !modoDesenho;
+        if (modoDesenho) {
+            FormasController.forma = 1;
             btPincel.setStyle("-fx-background-image: url('i-pincel-ativo.png'); -fx-background-color: transparent; -fx-background-position: center center; -fx-background-repeat: no-repeat; -fx-background-size: contain;");
             FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("formas-view.fxml"));
             VBox vBox = fxmlLoader.load();
             painel.setRight(vBox);
         } else {
+            FormasController.forma = -1;
             btPincel.setStyle("-fx-background-image: url('i-pincel.png'); -fx-background-color: transparent; -fx-background-position: center center; -fx-background-repeat: no-repeat; -fx-background-size: contain;");
             painel.setRight(null);
         }
@@ -200,7 +273,12 @@ public class PrincipalController {
         imageView.setImage(original);
         slZoom.setValue(100);
         alterada = false;
-        desenhar = false;
+        if (modoDesenho) {
+            modoDesenho = false;
+            FormasController.forma = -1;
+            btPincel.setStyle("-fx-background-image: url('i-pincel.png'); -fx-background-color: transparent; -fx-background-position: center center; -fx-background-repeat: no-repeat; -fx-background-size: contain;");
+            painel.setRight(null);
+        }
     }
 
     public boolean onSalvar(ActionEvent actionEvent) {
@@ -224,7 +302,7 @@ public class PrincipalController {
     public boolean onSalvarComo(ActionEvent actionEvent) {
         FileChooser fc = new FileChooser();
         fc.setTitle("Salvar");
-        fc.setInitialDirectory(new File("../../../Pictures/"));
+        fc.setInitialDirectory(new File("../"));
         fc.getExtensionFilters().addAll(
                 new FileChooser.ExtensionFilter(
                         "Imagens (*.png, *.jpg, *.bmp)",
@@ -301,16 +379,14 @@ public class PrincipalController {
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.setResizable(false);
 
+        InfoController controller = fxmlLoader.getController();
+        controller.setInformacoes(arquivo);
+
         InputStream caminhoIcone = getClass().getResourceAsStream("/icones/icone.png");
         if (caminhoIcone != null) {
             Image icon = new Image(caminhoIcone);
             stage.getIcons().add(icon);
         }
-
-        //InfoController.nome.setText(caminho.substring(caminho.lastIndexOf("/")));
-        InfoController.tamanho.setText("tamanho da imagem");
-        //InfoController.local.setText(caminho);
-        //InfoController.tipo.setText(caminho.substring(caminho.lastIndexOf(".") + 1));*/
 
         stage.showAndWait();
     }
@@ -344,7 +420,7 @@ public class PrincipalController {
 
         slZoom.setDisable(flag);
 
-        desenhar = false;
+        modoDesenho = false;
     }
 
     public void onEscalaCinza(ActionEvent actionEvent) {
@@ -388,7 +464,7 @@ public class PrincipalController {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("gaussblur-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
 
-        stage.setTitle("Noise");
+        stage.setTitle("Desfoque");
         stage.setScene(scene);
         stage.initStyle(StageStyle.UTILITY);
         stage.initModality(Modality.APPLICATION_MODAL);

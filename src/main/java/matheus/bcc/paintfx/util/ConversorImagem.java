@@ -111,8 +111,8 @@ public class ConversorImagem {
         return SwingFXUtils.toFXImage(bimg, null);
     }
 
-    public static Image desenharNaImagem(Image image, double col, double lin, double tamanho, Color cor) {
-        BufferedImage bimg = SwingFXUtils.fromFXImage(image, null);
+    public static Image desenharNaImagem(Image img, double col, double lin, double tamanho, Color cor) {
+        BufferedImage bimg = SwingFXUtils.fromFXImage(img, null);
         Graphics2D g2d = bimg.createGraphics();
 
         g2d.setColor(cor);
@@ -121,5 +121,54 @@ public class ConversorImagem {
         g2d.fillOval((int)(col - (double) largura / 2), (int)(lin - (double) largura / 2), largura, largura);
         g2d.dispose();
         return SwingFXUtils.toFXImage(bimg, null);
+    }
+
+    public static Image desenharRetangulo(Image img, double x1, double y1, double x2, double y2, int espessura, Color cor) {
+        BufferedImage bimg = SwingFXUtils.fromFXImage(img, null);
+        Graphics2D g2d = bimg.createGraphics();
+
+        g2d.setColor(cor);
+        g2d.setStroke(new BasicStroke(espessura));
+
+        int x = (int) Math.min(x1, x2);
+        int y = (int) Math.min(y1, y2);
+        int largura = (int) Math.abs(x1 - x2);
+        int altura = (int) Math.abs(y1 - y2);
+
+        g2d.drawRect(x, y, largura, altura);
+        g2d.dispose();
+
+        return SwingFXUtils.toFXImage(bimg, null);
+    }
+
+    public static Image desenharCirculo(Image img, double x1, double y1, double x2, double y2, int espessura, Color cor) {
+        BufferedImage bimg = SwingFXUtils.fromFXImage(img, null);
+        Graphics2D g2d = bimg.createGraphics();
+
+        g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+        g2d.setColor(cor);
+        g2d.setStroke(new BasicStroke(espessura));
+
+        int x = (int) Math.min(x1, x2);
+        int y = (int) Math.min(y1, y2);
+        int largura = (int) Math.abs(x1 - x2);
+        int altura = (int) Math.abs(y1 - y2);
+
+        g2d.drawOval(x, y, largura, altura);
+        g2d.dispose();
+
+        return SwingFXUtils.toFXImage(bimg, null);
+    }
+
+    public static Image adicionarTexto(Image img, String texto, Font fonte, Color cor, int x, int y) {
+        BufferedImage bufferedImage = SwingFXUtils.fromFXImage(img, null);
+
+        Graphics2D g2d = bufferedImage.createGraphics();
+        g2d.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
+        g2d.setFont(fonte);
+        g2d.setColor(cor);
+        g2d.drawString(texto, x, y);
+        g2d.dispose();
+        return SwingFXUtils.toFXImage(bufferedImage, null);
     }
 }

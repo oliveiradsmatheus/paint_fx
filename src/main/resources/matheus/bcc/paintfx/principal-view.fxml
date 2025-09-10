@@ -19,6 +19,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
+<?import javafx.scene.Cursor?>
 <BorderPane fx:id="painel" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="matheus.bcc.paintfx.PrincipalController">
     <top>
         <VBox prefHeight="87.0" prefWidth="800.0" style="-fx-background-color: gray;" BorderPane.alignment="CENTER">
@@ -53,7 +54,7 @@
                                 <MenuItem fx:id="menuGauss" disable="true" onAction="#onDesfoque" text="Desfoque _Gaussiano" />
                                 <MenuItem fx:id="menuDilatar" disable="true" onAction="#onDilatar" text="_Dilatar" />
                                 <MenuItem fx:id="menuCalorificar" disable="true" onAction="#onCalorificar" text="_Calorificar" />
-                        <MenuItem fx:id="menuNoise" disable="true" onAction="#onNoise" text="_Noise" />
+                                <MenuItem fx:id="menuNoise" disable="true" onAction="#onNoise" text="_Noise" />
                             </items>
                         </Menu>
                         <Menu text="A_juda">
@@ -67,6 +68,12 @@
                 <ToolBar prefHeight="109.0" prefWidth="800.0">
                     <items>
                         <Button mnemonicParsing="false" onAction="#onAbrir" prefHeight="32.0" prefWidth="32.0" style="-fx-background-image: url('i-abrir.png'); -fx-background-color: transparent; -fx-background-position: center center; -fx-background-repeat: no-repeat; -fx-background-size: contain;">
+                            <VBox.margin>
+                                <Insets bottom="12.0" />
+                            </VBox.margin>
+                            <cursor>
+                                <Cursor fx:constant="HAND" />
+                            </cursor>
                             <tooltip>
                                 <Tooltip text="Abrir">
                                     <font>
@@ -78,6 +85,12 @@
                             </font>
                         </Button>
                         <Button fx:id="btRecarregar" disable="true" layoutX="10.0" layoutY="20.0" mnemonicParsing="false" onAction="#onRecarregar" prefHeight="32.0" prefWidth="32.0" style="-fx-background-image: url('i-recarregar.png'); -fx-background-color: transparent; -fx-background-position: center center; -fx-background-repeat: no-repeat; -fx-background-size: contain;">
+                            <VBox.margin>
+                                <Insets bottom="12.0" />
+                            </VBox.margin>
+                            <cursor>
+                                <Cursor fx:constant="HAND" />
+                            </cursor>
                             <tooltip>
                                 <Tooltip text="Recarregar Imagem">
                                     <font>
@@ -90,6 +103,12 @@
                             </font>
                         </Button>
                         <Button fx:id="btSalvar" disable="true" layoutX="10.0" layoutY="20.0" mnemonicParsing="false" onAction="#onSalvar" prefHeight="32.0" prefWidth="32.0" style="-fx-background-image: url('i-salvar.png'); -fx-background-color: transparent; -fx-background-position: center center; -fx-background-repeat: no-repeat; -fx-background-size: contain;">
+                            <VBox.margin>
+                                <Insets bottom="12.0" />
+                            </VBox.margin>
+                            <cursor>
+                                <Cursor fx:constant="HAND" />
+                            </cursor>
                             <font>
                                 <Font size="8.0" />
                             </font>
@@ -102,6 +121,12 @@
                             </tooltip>
                         </Button>
                         <Button fx:id="btSalvarComo" disable="true" layoutX="82.0" layoutY="20.0" mnemonicParsing="false" onAction="#onSalvarComo" prefHeight="32.0" prefWidth="32.0" style="-fx-background-image: url('i-salvarcomo.png'); -fx-background-color: transparent; -fx-background-position: center center; -fx-background-repeat: no-repeat; -fx-background-size: contain;">
+                            <VBox.margin>
+                                <Insets bottom="12.0" />
+                            </VBox.margin>
+                            <cursor>
+                                <Cursor fx:constant="HAND" />
+                            </cursor>
                             <font>
                                 <Font size="8.0" />
                             </font>
@@ -115,6 +140,12 @@
                         </Button>
                         <Separator orientation="VERTICAL" prefHeight="0.0" prefWidth="2.0" />
                         <Button fx:id="btTonsCinza" disable="true" layoutX="46.0" layoutY="20.0" mnemonicParsing="false" onAction="#onEscalaCinza" prefHeight="32.0" prefWidth="32.0" style="-fx-background-image: url('i-cinza.png'); -fx-background-color: transparent; -fx-background-position: center center; -fx-background-repeat: no-repeat; -fx-background-size: contain;">
+                            <VBox.margin>
+                                <Insets bottom="12.0" />
+                            </VBox.margin>
+                            <cursor>
+                                <Cursor fx:constant="HAND" />
+                            </cursor>
                             <font>
                                 <Font size="8.0" />
                             </font>
@@ -127,6 +158,12 @@
                             </tooltip>
                         </Button>
                         <Button fx:id="btHor" disable="true" layoutX="247.0" layoutY="20.0" mnemonicParsing="false" onAction="#onEspelharHorizontal" prefHeight="32.0" prefWidth="32.0" style="-fx-background-image: url('i-horizontal.png'); -fx-background-color: transparent; -fx-background-position: center center; -fx-background-repeat: no-repeat; -fx-background-size: contain;">
+                            <VBox.margin>
+                                <Insets bottom="12.0" />
+                            </VBox.margin>
+                            <cursor>
+                                <Cursor fx:constant="HAND" />
+                            </cursor>
                             <font>
                                 <Font size="8.0" />
                             </font>
@@ -139,6 +176,12 @@
                             </tooltip>
                         </Button>
                         <Button fx:id="btVer" disable="true" layoutX="200.0" layoutY="20.0" mnemonicParsing="false" onAction="#onEspelharVertical" prefHeight="32.0" prefWidth="32.0" style="-fx-background-image: url('i-vertical.png'); -fx-background-color: transparent; -fx-background-position: center center; -fx-background-repeat: no-repeat; -fx-background-size: contain;">
+                            <VBox.margin>
+                                <Insets bottom="12.0" />
+                            </VBox.margin>
+                            <cursor>
+                                <Cursor fx:constant="HAND" />
+                            </cursor>
                             <font>
                                 <Font size="8.0" />
                             </font>
@@ -152,6 +195,12 @@
                         </Button>
                         <Separator layoutX="82.0" layoutY="10.0" orientation="VERTICAL" prefHeight="0.0" prefWidth="2.0" />
                         <Button fx:id="btInfo" disable="true" layoutX="283.0" layoutY="20.0" mnemonicParsing="false" onAction="#onInfo" prefHeight="32.0" prefWidth="32.0" style="-fx-background-image: url('i-info.png'); -fx-background-color: transparent; -fx-background-position: center center; -fx-background-repeat: no-repeat; -fx-background-size: contain;">
+                            <VBox.margin>
+                                <Insets bottom="12.0" />
+                            </VBox.margin>
+                            <cursor>
+                                <Cursor fx:constant="HAND" />
+                            </cursor>
                             <font>
                                 <Font size="8.0" />
                             </font>
@@ -164,6 +213,12 @@
                             </tooltip>
                         </Button>
                         <Button layoutX="211.0" layoutY="20.0" mnemonicParsing="false" onAction="#onSobre" prefHeight="32.0" prefWidth="32.0" style="-fx-background-image: url('i-ajuda.png'); -fx-background-color: transparent; -fx-background-position: center center; -fx-background-repeat: no-repeat; -fx-background-size: contain;">
+                            <VBox.margin>
+                                <Insets bottom="12.0" />
+                            </VBox.margin>
+                            <cursor>
+                                <Cursor fx:constant="HAND" />
+                            </cursor>
                             <font>
                                 <Font size="8.0" />
                             </font>
@@ -177,6 +232,12 @@
                         </Button>
                         <Separator layoutX="154.0" layoutY="10.0" orientation="VERTICAL" prefHeight="0.0" prefWidth="2.0" />
                         <Button fx:id="btPincel" disable="true" layoutX="329.0" layoutY="20.0" mnemonicParsing="false" onAction="#onAtivarDesenho" prefHeight="32.0" prefWidth="32.0" style="-fx-background-image: url('i-pincel.png'); -fx-background-color: transparent; -fx-background-position: center center; -fx-background-repeat: no-repeat; -fx-background-size: contain;">
+                            <VBox.margin>
+                                <Insets bottom="12.0" />
+                            </VBox.margin>
+                            <cursor>
+                                <Cursor fx:constant="HAND" />
+                            </cursor>
                             <font>
                                 <Font size="8.0" />
                             </font>
@@ -188,32 +249,32 @@
                                 </Tooltip>
                             </tooltip>
                         </Button>
-                  <Button fx:id="btCor" ellipsisString="" mnemonicParsing="false" prefHeight="24.0" prefWidth="24.0" style="-fx-background-color: black;" />
-                  <VBox prefHeight="54.0" prefWidth="120.0">
-                     <children>
-                        <HBox prefHeight="30.0" prefWidth="100.0">
-                           <children>
-                              <Button fx:id="btPreto" ellipsisString="" mnemonicParsing="false" onAction="#onTrocarCor" prefHeight="24.0" prefWidth="24.0" style="-fx-background-color: black;" />
-                              <Button fx:id="btVermelho" ellipsisString="" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#onTrocarCor" prefHeight="24.0" prefWidth="24.0" style="-fx-background-color: red;" />
-                              <Button fx:id="btLaranja" ellipsisString="" layoutX="34.0" layoutY="10.0" mnemonicParsing="false" onAction="#onTrocarCor" prefHeight="24.0" prefWidth="24.0" style="-fx-background-color: orange;" />
-                              <Button fx:id="btAmarelo" ellipsisString="" layoutX="58.0" layoutY="10.0" mnemonicParsing="false" onAction="#onTrocarCor" prefHeight="24.0" prefWidth="24.0" style="-fx-background-color: yellow;" />
-                              <Button fx:id="btVerde" ellipsisString="" layoutX="82.0" layoutY="10.0" mnemonicParsing="false" onAction="#onTrocarCor" prefHeight="24.0" prefWidth="24.0" style="-fx-background-color: green;" />
-                           </children>
-                        </HBox>
-                        <HBox prefHeight="29.0" prefWidth="100.0">
-                           <children>
-                              <Button fx:id="btBranco" ellipsisString="" mnemonicParsing="false" onAction="#onTrocarCor" prefHeight="24.0" prefWidth="24.0" style="-fx-background-color: white;" text="Button" />
-                              <Button fx:id="btCinza" ellipsisString="" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#onTrocarCor" prefHeight="24.0" prefWidth="24.0" style="-fx-background-color: gray;" text="Button" />
-                              <Button fx:id="btRosa" ellipsisString="" layoutX="34.0" layoutY="10.0" mnemonicParsing="false" onAction="#onTrocarCor" prefHeight="24.0" prefWidth="24.0" style="-fx-background-color: pink;" text="Button" />
-                              <Button fx:id="btTurquesa" ellipsisString="" layoutX="58.0" layoutY="10.0" mnemonicParsing="false" onAction="#onTrocarCor" prefHeight="24.0" prefWidth="24.0" style="-fx-background-color: turquoise;" text="Button" />
-                              <Button fx:id="btRoxo" ellipsisString="" layoutX="82.0" layoutY="10.0" mnemonicParsing="false" onAction="#onTrocarCor" prefHeight="24.0" prefWidth="24.0" style="-fx-background-color: purple;" text="Button" />
-                           </children>
-                           <VBox.margin>
-                              <Insets />
-                           </VBox.margin>
-                        </HBox>
-                     </children>
-                  </VBox>
+                        <Button fx:id="btCor" ellipsisString="" mnemonicParsing="false" prefHeight="24.0" prefWidth="24.0" style="-fx-background-color: black;" />
+                        <VBox prefHeight="54.0" prefWidth="120.0">
+                            <children>
+                                <HBox prefHeight="30.0" prefWidth="100.0">
+                                    <children>
+                                        <Button fx:id="btPreto" ellipsisString="" mnemonicParsing="false" onAction="#onTrocarCor" prefHeight="24.0" prefWidth="24.0" style="-fx-background-color: black;" />
+                                        <Button fx:id="btVermelho" ellipsisString="" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#onTrocarCor" prefHeight="24.0" prefWidth="24.0" style="-fx-background-color: red;" />
+                                        <Button fx:id="btLaranja" ellipsisString="" layoutX="34.0" layoutY="10.0" mnemonicParsing="false" onAction="#onTrocarCor" prefHeight="24.0" prefWidth="24.0" style="-fx-background-color: orange;" />
+                                        <Button fx:id="btAmarelo" ellipsisString="" layoutX="58.0" layoutY="10.0" mnemonicParsing="false" onAction="#onTrocarCor" prefHeight="24.0" prefWidth="24.0" style="-fx-background-color: yellow;" />
+                                        <Button fx:id="btVerde" ellipsisString="" layoutX="82.0" layoutY="10.0" mnemonicParsing="false" onAction="#onTrocarCor" prefHeight="24.0" prefWidth="24.0" style="-fx-background-color: green;" />
+                                    </children>
+                                </HBox>
+                                <HBox prefHeight="29.0" prefWidth="100.0">
+                                    <children>
+                                        <Button fx:id="btBranco" ellipsisString="" mnemonicParsing="false" onAction="#onTrocarCor" prefHeight="24.0" prefWidth="24.0" style="-fx-background-color: white;" text="Button" />
+                                        <Button fx:id="btCinza" ellipsisString="" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#onTrocarCor" prefHeight="24.0" prefWidth="24.0" style="-fx-background-color: gray;" text="Button" />
+                                        <Button fx:id="btRosa" ellipsisString="" layoutX="34.0" layoutY="10.0" mnemonicParsing="false" onAction="#onTrocarCor" prefHeight="24.0" prefWidth="24.0" style="-fx-background-color: pink;" text="Button" />
+                                        <Button fx:id="btTurquesa" ellipsisString="" layoutX="58.0" layoutY="10.0" mnemonicParsing="false" onAction="#onTrocarCor" prefHeight="24.0" prefWidth="24.0" style="-fx-background-color: turquoise;" text="Button" />
+                                        <Button fx:id="btRoxo" ellipsisString="" layoutX="82.0" layoutY="10.0" mnemonicParsing="false" onAction="#onTrocarCor" prefHeight="24.0" prefWidth="24.0" style="-fx-background-color: purple;" text="Button" />
+                                    </children>
+                                    <VBox.margin>
+                                        <Insets />
+                                    </VBox.margin>
+                                </HBox>
+                            </children>
+                        </VBox>
                     </items>
                 </ToolBar>
             </children></VBox>
@@ -221,15 +282,15 @@
     <center>
         <ScrollPane prefHeight="536.0" prefWidth="800.0" BorderPane.alignment="CENTER">
             <content>
-                <ImageView fx:id="imageView" onMouseDragged="#onDesenhar" onMousePressed="#onDesenhar" pickOnBounds="true" preserveRatio="true" />
+                <ImageView fx:id="imageView" onMousePressed="#onPressionarMouse" onMouseDragged="#onArrastarMouse" onMouseReleased="#onSoltarMouse" pickOnBounds="true" preserveRatio="true" />
             </content>
-         <contextMenu>
-            <ContextMenu onAction="#onInfo">
-              <items>
-                <MenuItem fx:id="miInfo" mnemonicParsing="false" text="Informacoes" disable="true" />
-              </items>
-            </ContextMenu>
-         </contextMenu>
+            <contextMenu>
+                <ContextMenu onAction="#onInfo">
+                    <items>
+                        <MenuItem fx:id="miInfo" mnemonicParsing="false" text="Informacoes" disable="true" />
+                    </items>
+                </ContextMenu>
+            </contextMenu>
         </ScrollPane>
     </center>
     <bottom>
