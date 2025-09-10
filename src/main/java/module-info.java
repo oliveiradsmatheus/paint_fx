@@ -8,4 +8,6 @@ module matheus.bcc.paintfx {
 
     opens matheus.bcc.paintfx to javafx.fxml;
     exports matheus.bcc.paintfx;
+    exports matheus.bcc.paintfx.controller;
+    opens matheus.bcc.paintfx.controller to javafx.fxml;
 }

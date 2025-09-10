@@ -20,7 +20,7 @@
 <?import javafx.scene.text.Font?>
 
 <?import javafx.scene.Cursor?>
-<BorderPane fx:id="painel" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="matheus.bcc.paintfx.PrincipalController">
+<BorderPane fx:id="painel" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="matheus.bcc.paintfx.controller.PrincipalController">
     <top>
         <VBox prefHeight="87.0" prefWidth="800.0" style="-fx-background-color: gray;" BorderPane.alignment="CENTER">
             <children>

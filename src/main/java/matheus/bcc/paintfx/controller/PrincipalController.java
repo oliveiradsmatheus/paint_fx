@@ -1,4 +1,4 @@
-package matheus.bcc.paintfx;
+package matheus.bcc.paintfx.controller;
 
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
@@ -17,6 +17,7 @@ import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import matheus.bcc.paintfx.Main;
 import matheus.bcc.paintfx.util.ConversorImageJ;
 import matheus.bcc.paintfx.util.ConversorImagem;
 

@@ -1,4 +1,4 @@
-package matheus.bcc.paintfx;
+package matheus.bcc.paintfx.controller;
 
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;

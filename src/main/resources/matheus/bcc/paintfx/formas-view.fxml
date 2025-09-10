@@ -5,7 +5,7 @@
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
-<VBox alignment="CENTER" prefHeight="550.0" prefWidth="66.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="matheus.bcc.paintfx.FormasController">
+<VBox alignment="CENTER" prefHeight="550.0" prefWidth="66.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="matheus.bcc.paintfx.controller.FormasController">
     <children>
         <Button mnemonicParsing="false" onMouseClicked="#onLivre" prefHeight="45.0" prefWidth="45.0" style="-fx-background-image: url('i-livre.png'); -fx-background-color: transparent; -fx-background-position: center center; -fx-background-repeat: no-repeat; -fx-background-size: contain;">
             <VBox.margin>
