@@ -95,8 +95,9 @@ public class PrincipalController {
                         "*.bmp"
                 )
         );
-        arquivo = fc.showOpenDialog(null);
-        if (arquivo != null) {
+        File novoArquivo = fc.showOpenDialog(null);
+        if (novoArquivo != null) {
+            arquivo = novoArquivo;
             desabilitarBotoes(false);
             caminho = arquivo.getAbsolutePath();
             Image imagem = new Image(arquivo.toURI().toString());
@@ -313,24 +314,31 @@ public class PrincipalController {
                         "*.bmp"
                 )
         );
-        File arquivo = fc.showSaveDialog(null);
-        if (arquivo != null) {
+        File novoArquivo = fc.showSaveDialog(null);
+        if (novoArquivo != null) {
             BufferedImage bimg = SwingFXUtils.fromFXImage(imageView.getImage(), null);
+            String novoCaminho = novoArquivo.getAbsolutePath();
+            String ext = "";
+            int pontoIndex = novoCaminho.lastIndexOf('.');
+            if (pontoIndex > 0 && pontoIndex < novoCaminho.length() - 1)
+                ext = novoCaminho.substring(pontoIndex + 1).toLowerCase();
+            else {
+                ext = caminho.substring(caminho.lastIndexOf(".") + 1).toLowerCase();
+                novoArquivo = new File(novoCaminho + "." + ext); // Adiciona a extensão
+            }
+            if (ext.equals("jpg") || ext.equals("jpeg"))
+                bimg = removerTransparencia(bimg);
             try {
-                String ext = caminho.substring(caminho.lastIndexOf(".") + 1).toLowerCase();
-                if (ext.equals("jpg") || ext.equals("jpeg"))
-                    bimg = removerTransparencia(bimg);
-                arquivo = new File(arquivo.getAbsolutePath().substring(0, arquivo.getAbsolutePath().lastIndexOf(".") + 1) + ext);
-                if (ImageIO.write(bimg, ext, arquivo)) {
-                    caminho = arquivo.getAbsolutePath();
+                if (ImageIO.write(bimg, ext, novoArquivo)) {
+                    arquivo = novoArquivo;
+                    caminho = novoArquivo.getAbsolutePath();
                     original = imageView.getImage();
-                    lbFileImage.setText(arquivo.getAbsolutePath() + " (" + original.getWidth() + "x" + original.getHeight() + ")");
+                    lbFileImage.setText(caminho + " (" + original.getWidth() + "x" + original.getHeight() + ")");
                     alterada = false;
+                    return true;
                 }
-                return true;
             } catch (Exception e) {
-                System.out.println(e.getMessage());
-                return false;
+                System.err.println("Erro ao salvar arquivo: " + e.getMessage());
             }
         }
         return false;
